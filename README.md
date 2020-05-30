@@ -1,28 +1,28 @@
-# Stock Info Getter
+# Stock Report Generator
 Python script that gets information on a certain financial products for various users and emails the reports.
 
 ### Setup:
 
-###### GCP Project:
+#### GCP Project:
 - GCP Project Access
 
-###### API Keys:
-- [Finnhub](https://finnhub.io/)
+#### API Keys:
+- Get an api key from [Finnhub](https://finnhub.io/)
 
-###### Python Virtual Environment:
+#### Python Virtual Environment:
 Steps are taken from here: [Setting up a Python development environment](https://cloud.google.com/python/setup)
 
 Create a python virtual environment so dependencies can be managed strictly within this project
 _note: requires python version > 3_
 ```
-python3 -m venv venv
+python -m venv venv
 source venv/bin/activate
 ```
 
-To deactivate
+To deactivate <br/>
 `deactivate`
 
-###### Packages to install:
+#### Packages to install:
 - Dotenv - to keep all api keys and other configs private
 - Google libaries
 - oauth2client - for authentication with google api via google credentials object
@@ -60,17 +60,17 @@ mappings:
 
 
 ### Running:
-Run the script with the following command
+Run the script with the following command <br/>
 `python stock_info_runner.py ${YOUR CONFIG FILE}`
 
-Run in test mode
+Run in test mode <br/>
 `python stock_info_runner.py ${YOUR CONFIG FILE} --test True`
 
-Run with increased logging
+Run with increased logging <br/>
 `python stock_info_runner.py ${YOUR CONFIG FILE} --log DEBUG`
 
 
-##### TO DO:
+### TO DO:
 - [X] API to get stock information
 - [X] get information of multiple stocks
 - [X] API to get news on stock (use news api)
