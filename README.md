@@ -60,6 +60,9 @@ mappings:
 
 
 ### Running:
+If using a virtual environment don't forget to use that version of python 
+`${your virtual environment name}/bin/python`
+
 Run the script with the following command <br/>
 `python stock_info_runner.py ${YOUR CONFIG FILE}`
 
