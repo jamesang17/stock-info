@@ -1,0 +1,184 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  cursor: pointer;
+}
+
+.Header {
+  background-color: lightblue;
+}
+
+.Name {
+  font-size: 1em;  
+}
+
+.Intro-container {
+  background-color: lightcyan;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.Stock-name {
+  padding: 1%;
+  margin: 0;
+  font-size: 2.5em;
+}
+
+.Quote-info-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.Quote-info {
+  margin-bottom: 1%;
+  padding-right: 2%;
+  padding-left: 1%;
+  font-size: 1.25em;
+}
+
+.Sentiment {
+  padding-left: 1%;
+  margin: 0;
+  padding-bottom: 1%;
+  font-size: 1.25em;
+}
+
+.Pos-sentiment-value {
+  color: green;
+}
+
+.Neg-sentiment-value {
+  color: red;
+}
+
+.Def-sentiment-value {
+  color: grey
+}
+
+.News-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  width: 100%
+}
+
+.Company-news-header {
+  padding: 1% 0 0 0;
+  margin: 0;
+}
+
+.News-article-1 {
+  background-color: lightslategray;
+  width: 95%;
+  height: 25vh;
+  margin: 2%;
+  position: relative;
+  overflow: hidden;
+}
+
+.Article-img {
+  width: 100%;
+  position: absolute;
+}
+
+.Article-description {
+  position: absolute;
+  overflow: hidden;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  background-color: rgba(0,0,0,0.5)
+}
+
+.Headline {
+  font-size: 2em;
+  padding: 0 1% 0 1%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.Source {
+  font-size: 1em;
+  padding: 0 1% 0 1%;
+}
+
+.Publish-time {
+  font-size: 0.85em;
+  padding-left: 1%;
+  margin: 0;
+}
+
+.Sub-news-articles {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.Sub-article {
+  background-color: lightslategray;
+  width: 24%;
+  height: 15vh;
+  margin: 2%;
+  position: relative;
+  overflow: hidden;
+}
+
+.Sub-Headline {
+  width: 90%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.Sub-Source {
+  margin: 0;
+  padding: 0;
+  font-size: 0.5em;
+}
+
+.Sub-publish-time {
+  margin: 0;
+  padding: 0;
+  font-size: 0.5em;
+}
+
+
+.Graph-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Sub-graph-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start; 
+}
+
+.Primary-line-graph {
+  width: 80vw;
+}
+
+.Line-graph {
+  width: 50vw;
+}
+
+.Line-break {
+  background-color: lightblue;
+  height: 1vh;
+}
