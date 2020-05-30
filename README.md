@@ -71,13 +71,13 @@ Run with increased logging <br/>
 
 
 ### TO DO:
-- [X] API to get stock information
-- [X] get information of multiple stocks
-- [X] API to get news on stock (use news api)
+- [ ] API to get stock information
+- [ ] get information of multiple stocks
+- [ ] API to get news on stock (use news api)
 - [ ] Incorporate industry news into report
-- [X] plot last week, month, 3 months performance for product
-- [X] get sentiment analysis of product/industry based on twitter and news
-- [X] write results to static html page
-- [X] store graph data on some bucket (GCP Bucket)
-- [X] images should be pulled from this bucket
+- [ ] plot last week, month, 3 months performance for product
+- [ ] get sentiment analysis of product/industry based on twitter and news
+- [ ] write results to static html page
+- [ ] store graph data on some bucket (GCP Bucket)
+- [ ] images should be pulled from this bucket
 - [ ] send results via email
