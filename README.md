@@ -20,7 +20,7 @@ source venv/bin/activate
 ```
 
 To deactivate
-`venv/bin/deactivate`
+`deactivate`
 
 ###### Packages to install:
 - Dotenv - to keep all api keys and other configs private
