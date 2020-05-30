@@ -48,7 +48,7 @@ def __generate_reports(output_dir, clients, profiles, news, quotes, sentiment_sc
 
 
 def __email_reports(reports_dir, clients) -> None:
-  sender = "jamesang717@gmail.com"
+  sender = "" ## SOME EMAIL HERE
   bar = Bar('Emailing Reports', max=len(clients))
   for client in clients:
     gmail_api.email_report(sender, client, reports_dir)
