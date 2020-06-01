@@ -39,7 +39,9 @@ def __add_header(f, client):
 
 def __add_intro(f, stock, name, quote, sentiment):
   sent_style = "Pos-sentiment-value"
-  if sentiment < 0:
+  if sentiment == "N/A":
+    sent_style = "No-sentiment"
+  elif sentiment < 0:
     sent_style = "Neg-sentiment-value"
   elif sentiment == 0:
     sent_style = "Def-sentiment-value"
