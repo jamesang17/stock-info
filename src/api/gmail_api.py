@@ -79,7 +79,7 @@ def __get_credentials():
   # The file token.pickle stores the user's access and refresh tokens, and is
   # created automatically when the authorization flow completes for the first
   # time.
-  SCOPES = ['https://mail.google.com']
+  SCOPES = ['https://www.googleapis.com/auth/gmail.send']
 
   if os.path.exists('token.pickle'):
       with open('token.pickle', 'rb') as token:
@@ -116,10 +116,6 @@ def email_report(sender, client, reports_dir):
   creds = __get_credentials()
 
   service = build('gmail', 'v1', credentials=creds, cache_discovery=False)
-  # __send_email(service, sender, message)
+  __send_email(service, sender, message)
 
   log.info("Message sent to %s", client)
-
-
-
-

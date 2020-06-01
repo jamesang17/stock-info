@@ -68,7 +68,7 @@ Run the script with the following command <br/>
 `python stock_info_runner.py ${YOUR CONFIG FILE}`
 
 Run in test mode <br/>
-`python stock_info_runner.py ${YOUR CONFIG FILE} --test True`
+`python stock_info_runner.py ${YOUR CONFIG FILE} --test`
 
 Run with increased logging <br/>
 `python stock_info_runner.py ${YOUR CONFIG FILE} --log DEBUG`
