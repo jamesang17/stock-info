@@ -35,7 +35,7 @@ def __cleanup(path) -> None:
   
 
 def __generate_reports(output_dir, clients, profiles, news, quotes, sentiment_scores) -> None:
-  reports_path = os.path.join(output_dir,"reports")
+  reports_path = os.path.join(output_dir, "reports")
   os.mkdir(reports_path)
   bar = Bar('Client Reports Created', max=len(clients))
   for client in clients:
@@ -59,12 +59,12 @@ def __email_reports(reports_dir, clients) -> None:
 def main():
   parser = argparse.ArgumentParser(description="Retrieve stock information and desired stocks and email results")
   parser.add_argument('stockconfig', help='yaml file with email to stock symbol list mapping')
-  parser.add_argument('--test', type=bool, help='Run in test mode where tmp directory will not be removed. Default is False') 
+  parser.add_argument('--test', action='store_true', help='Run in test mode where tmp directory will not be removed.') 
   parser.add_argument('--loglevel', help='set logging level [INFO, DEBUG, WARN]. default is INFO')
 
   args = parser.parse_args()
   config = args.stockconfig
-  testMode = False if not args.test else True
+  testMode = args.test
   loglevel = log.INFO
 
   if str(args.loglevel).upper() == "DEBUG":
@@ -75,7 +75,9 @@ def main():
   log.getLogger().setLevel(loglevel)
   log.info("Running using args: [ Config File: %s, Test Mode: %s, Log Level: %s ]", 
     config, str(testMode), str(loglevel))
-  if testMode: log.info("Test mode is enabled. Temporary directory will not be removed.")
+
+  if testMode: 
+    log.info("Test mode is enabled. Temporary directory will not be removed.")
 
   temp_dir = __setup()
 
