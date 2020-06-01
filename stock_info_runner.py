@@ -47,8 +47,7 @@ def __generate_reports(output_dir, clients, profiles, news, quotes, sentiment_sc
   bar.finish()
 
 
-def __email_reports(reports_dir, clients) -> None:
-  sender = "" ## SOME EMAIL HERE
+def __email_reports(reports_dir, clients, sender) -> None:
   bar = Bar('Emailing Reports', max=len(clients))
   for client in clients:
     gmail_api.email_report(sender, client, reports_dir)
@@ -88,6 +87,7 @@ def main():
   stocks = set()
   clients = {}
   people = data["mappings"]
+  sender = data["sender"]
   for p in people:
     clients[p["email"]] = p["stocks"]
     stocks.update(p["stocks"])
@@ -105,7 +105,7 @@ def main():
   __generate_reports(temp_dir, clients, profiles, news, quotes, sentiment_scores)
 
   if not testMode:
-    __email_reports(os.path.join(temp_dir,"reports"), clients)
+    __email_reports(os.path.join(temp_dir,"reports"), clients, sender)
     __cleanup(temp_dir)
 
   log.info("DONE.")
