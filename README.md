@@ -48,6 +48,7 @@ pip install python-dotenv \
 Create a yaml file with the following strcuture
 
 ```yaml
+sender: "test-sender@test.com"
 mappings:
   - email: "test@test.com"
     stocks:
