@@ -20,6 +20,7 @@ def __upload_to_gcp_bucket(path, fname,date):
   bucket = storage_client.bucket(settings.GCP_BUCKET)
   blob = bucket.blob(date + "/" + fname)
   blob.upload_from_filename(path)
+  blob.make_public()
   log.debug("File %s uploaded to GCP Bucket at %s", path, date + "/" + fname)
 
 

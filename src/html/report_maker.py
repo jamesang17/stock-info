@@ -1,8 +1,10 @@
 import time
+import datetime
 import os
 import pathlib
 from .. import settings
 from progress.bar import Bar
+from google.cloud import storage
 
 
 def __add_opening_tags(f, output_dir):
@@ -40,11 +42,9 @@ def __add_header(f, client):
 def __add_intro(f, stock, name, quote, sentiment):
   sent_style = "Pos-sentiment-value"
   if sentiment == "N/A":
-    sent_style = "No-sentiment"
+    sent_style = "Def-sentiment-value"
   elif sentiment < 0:
     sent_style = "Neg-sentiment-value"
-  elif sentiment == 0:
-    sent_style = "Def-sentiment-value"
   html = [
       """<div class="Intro-container">""",
       """<h2 class="Stock-name">""",
@@ -82,8 +82,10 @@ def __add_news(f, news):
           """</div></a></div><div class="Sub-news-articles">"""
       ])
     else:
-      html.extend([
-          """<div class="Sub-article">""",
+      if i % 2 != 0:
+        html.extend([
+          """<div class="Sub-article-group">""",
+         """<div class="Sub-article">""",
           "<a href=", '"' + news[i]["url"] + '"', """ target="_blank" rel="noopener noreferrer">""",
           """<img src=""", '"' + news[i]["image"] + '"', """ class="Article-img">""",
           """<div class="Article-description">""",
@@ -91,19 +93,36 @@ def __add_news(f, news):
           """<p class="Sub-Source">""", news[i]["source"], "</p>",
           """<p class="Sub-publish-time">""", time.strftime('%m-%d-%Y', time.localtime(news[i]["datetime"])), "</p>",
           "</div></a></div>"
+        ])
+      else:
+        html.extend([
+            """<div class="Sub-article">""",
+            "<a href=", '"' + news[i]["url"] + '"', """ target="_blank" rel="noopener noreferrer">""",
+            """<img src=""", '"' + news[i]["image"] + '"', """ class="Article-img">""",
+            """<div class="Article-description">""",
+            """<p class="Sub-Headline">""", news[i]["headline"], "</p>",
+            """<p class="Sub-Source">""", news[i]["source"], "</p>",
+            """<p class="Sub-publish-time">""", time.strftime('%m-%d-%Y', time.localtime(news[i]["datetime"])), "</p>",
+            "</div></a></div></div>"
       ])
     i+=1
+  if i < 6 and (len(news)-1) % 2 != 0:
+    html.append("</div>")
   html.append("""</div></div>""")
   f.write(''.join(html))
 
 
 def __add_graphs(f, stock, gcp_path):
+  date = datetime.datetime.today().strftime("%Y%m%d")
+  storage_client = storage.Client()
+  bucket = storage_client.bucket(settings.GCP_BUCKET)
+
   html = [
       """<div class="Graph-container">""",
-      """<img src=""", '"' + gcp_path + stock+"_3mo.png" + '"', """ class="Primary-line-graph" />""",
+      """<img src=""", '"' + bucket.blob(date + "/" + stock+"_3mo.png").public_url + '"', """ class="Primary-line-graph" />""",
       """<div class="Sub-graph-container">""",
-      """<img src=""", '"' + gcp_path + stock+"_1mo.png" + '"', """ class="Line-graph" />""",
-      """<img src=""", '"' + gcp_path + stock+"_1wk.png" + '"', """ class="Line-graph" />""",
+      """<img src=""", '"' + bucket.blob(date + "/" + stock+"_1mo.png").public_url + '"', """ class="Line-graph" />""",
+      """<img src=""", '"' + bucket.blob(date + "/" + stock+"_1wk.png").public_url + '"', """ class="Line-graph" />""",
       "</div></div>"
   ]
   f.write(''.join(html))
