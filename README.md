@@ -45,7 +45,7 @@ pip install python-dotenv \
 
 
 ### Configuration:
-Create a yaml file with the following strcuture
+Create a yaml file with the following structure
 
 ```yaml
 sender: "test-sender@test.com"
