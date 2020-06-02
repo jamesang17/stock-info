@@ -60,8 +60,8 @@ def __send_email(service, sender, message):
 
 def __find_report(client,files):
   lo,hi = 0,len(files)
-  m = (lo+hi) // 2
-  while lo < hi:
+  while lo <= hi:
+    m = (lo+hi) // 2
     fname = files[m].split("_report")[0]
     if fname == client:
       return files[m]
@@ -95,10 +95,6 @@ def __get_credentials():
     # Save the credentials for the next run
     with open('token.pickle', 'wb') as token:
       pickle.dump(creds, token)
-
-  # SERVICE_ACCOUNT_FILE = settings.GOOGLE_APP_CREDS
-
-  # creds = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
 
   return creds
 
